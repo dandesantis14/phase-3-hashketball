@@ -1,3 +1,4 @@
+require "pry"
 # Write your code below game_hash
 def game_hash
   {
@@ -127,3 +128,43 @@ def game_hash
 end
 
 # Write code here
+def num_points_scored player
+  playerCatch = nil
+  game_hash.each do |team, teamInfo|
+    playerCatch = teamInfo[:players].find{|p| p[:player_name] == player }
+    if playerCatch != nil
+      break
+    end
+  end
+  playerCatch[:points]
+end
+
+def shoe_size player
+  playerCatch = nil
+  game_hash.each do |team, teamInfo|
+    playerCatch = teamInfo[:players].find{|p| p[:player_name] == player }
+    if playerCatch != nil
+      break
+    end
+  end
+  playerCatch[:shoe]
+end
+
+def team_colors teamName
+  colorCatch = []
+  game_hash.each do |team, teamInfo|
+    if teamInfo[:team_name] == teamName
+      colorCatch = teamInfo[:colors]
+      break
+    end
+  end
+  colorCatch
+end
+
+def team_names 
+  teamNameCatch = []
+  game_hash.each do |team, teamInfo|
+    teamNameCatch.push teamInfo[:team_name]
+  end
+  teamNameCatch
+end
